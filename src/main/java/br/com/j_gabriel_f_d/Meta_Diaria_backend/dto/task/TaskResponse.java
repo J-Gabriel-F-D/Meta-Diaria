@@ -1,0 +1,15 @@
+package br.com.j_gabriel_f_d.Meta_Diaria_backend.dto.task;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class TaskResponse {
+
+    private Long id;
+    private String title;
+    private String description;
+    private boolean completed;
+    private String createdAt;
+}

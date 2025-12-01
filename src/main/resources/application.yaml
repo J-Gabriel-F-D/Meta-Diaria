@@ -2,9 +2,9 @@ spring:
   application:
     name: meta-diaria
   datasource:
-    url: jdbc:postgresql://localhost:5432/metadiaria
-    username: postgres
-    password: postgres
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/metadiaria}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
   jpa:
     hibernate:
       ddl-auto: update
@@ -12,11 +12,11 @@ spring:
       hibernate:
         format_sql: true
   jackson:
-    time-zone: America/Sao_Paulo
+    time-zone: America/Fortaleza
 
 server:
-  port: 8080
+  port: ${SERVER_PORT:8080}
 
 jwt:
-  secret: my-super-secret-key-change-in-prod
-  expiration: 3600000 # 1h em ms
+  secret: ${JWT_SECRET:my-super-secret-key-change-in-prod}
+  expiration: ${JWT_EXPIRATION:3600000}
