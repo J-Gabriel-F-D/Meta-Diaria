@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import br.com.j_gabriel_f_d.Meta_Diaria_backend.exception.NotFoundException;
 import br.com.j_gabriel_f_d.Meta_Diaria_backend.model.Task;
 import br.com.j_gabriel_f_d.Meta_Diaria_backend.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task update(Long id, Task task) {
         Task existing = taskRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Task not found"));
+                .orElseThrow(() -> new NotFoundException("Task not found"));
 
         existing.setTitle(task.getTitle());
         existing.setDescription(task.getDescription());
@@ -35,7 +36,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task findById(Long id) {
         return taskRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Task not found"));
+                .orElseThrow(() -> new NotFoundException("Task not found"));
     }
 
     @Override
